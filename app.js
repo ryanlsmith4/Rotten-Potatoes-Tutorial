@@ -4,35 +4,42 @@ const app = express();
 var exphbs = require('express-handlebars');
 //Initialize mongoDB
 const mongoose = require('mongoose');
+//Initialize Body-Parser
+const bodyParser = require('body-parser');
 
+app.use(bodyParser.urlencoded({ extended: true }));
 mongoose.connect('mongodb://localhost/rotten-potatoes', { useNewUrlParser: true });
 
+//Method to handle review
 const Review = mongoose.model('Review', {
-    title: String
+    title: String,
+    description: String,
+    movieTitle: String
 });
 //show
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 
 app.set('view engine', 'handlebars');
 
-// app.get('/', (req, res) => {
-//   res.send('Hello World!')
-// })
+app.post('/reviews', (req, res) => {
+    console.log(req.body);
+    // res.render('reviews-new', {});
+});
 
-// app.get('/', (req, res) => {
-//     res.render('home', {msg: 'hello world!'});
-// })
+//Create function to save data to mongoDB
+app.post('/reviews', (req, res) => {
+    Review.create(req.body).then((review) => {
+        console.log(review);
+        res.redirect('/');
+    }).catch((err) => {
+        console.log(err.message);
+    })
+});
 
+//Communicate with localhost
 app.listen(3000, () => {
     console.log('App listening on port 3000!')
-})
-//Mock Array of Projects
-// let reviews = [
-//     { title: 'Great Review' },
-//     { title: "Next Review" },
-//     { title: "Check Out This one!" },
-//     { title: "great movies dawg "}
-// ];
+});
 
 // Index
 app.get('/', (req, res) => {
@@ -43,4 +50,9 @@ app.get('/', (req, res) => {
         .catch(err => {
             console.log(err);
         })
-})
+});
+
+//Route for reviews/New
+app.get('/reviews/new',(req, res) => {
+    res.render('reviews-new', {});
+});
