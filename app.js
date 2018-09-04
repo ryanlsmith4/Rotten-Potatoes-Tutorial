@@ -64,7 +64,7 @@ app.get('/reviews/new',(req, res) => {
     res.render('reviews-new', {});
 });
 
-//This is Broken RN
+//Gets Review at ID
 app.get('/reviews/:id', (req, res) => {
   Review.findById(req.params.id).then((review) => {
     res.render('reviews-show', { review: review })
@@ -79,6 +79,17 @@ app.get('/reviews/:id/edit', function (req, res) {
         res.render('reviews-edit', {review: review});
     })
 })
+
+// Delete
+app.delete('/reviews/:id', function (req, res) {
+    console.log("DELETE review");
+    Review.findByIdAndRemove(req.params.id).then((review) => {
+        res.redirect('/');
+    }).catch((err) => {
+        console.log(err.message);
+    })
+})
+
 //Communicate with localhost
 app.listen(3000, () => {
     mongoose.connect('mongodb://localhost:27017/rotten-potatoes', { useNewUrlParser: true });
