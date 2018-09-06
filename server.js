@@ -18,12 +18,14 @@ app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 
 app.set('view engine', 'handlebars');
 
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/rotten-potatoes', { useNewUrlParser: true });
+
 require('./controllers/reviews')(app);
 
 
 //Communicate with localhost
 app.listen(3000, () => {
-    mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/rotten-potatoes', { useNewUrlParser: true });
+
     console.log('App listening on port 3000!')
 });
 
