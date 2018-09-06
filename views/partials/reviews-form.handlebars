@@ -1,25 +1,23 @@
 <!-- views/partials/reviews-form.handlebars -->
 
 <fieldset>
-  <legend>Edit Review</legend>
-  <!-- <p>
-     <button <a href="/">Go Home</a></button>
-  </p> -->
-  <!-- TITLE -->
-  <p>
-    <label for="review-title">Title</label><br>
-    <input id="review-title" type="text" name="title" value="{{review.title}}"/>
-  </p>
+    <legend>Edit Review</legend>
+    <!-- TITLE -->
+    <div class="form-group">
+        <label for="review-title">Title</label><br>
+        <input id="review-title" type="text" name="title" value="{{review.title}}"/>
 
-  <!-- MOVIE TITLE -->
-  <p>
-    <label for="movie-title">Movie Title</label><br>
-    <input id="movie-title" type="text" name="movieTitle" value="{{review.movieTitle}}" />
-  </p>
+</div>
+    <!-- MOVIE TITLE -->
+    <div class="form-group">
+        <label for="movie-title">Movie Title</label><br>
+        <input id="movie-title" type="text" name="movieTitle" value="{{review.movieTitle}}" />
 
-  <!-- DESCRIPTION -->
-  <p>
-    <label for="review-description">Description</label><br>
-    <textarea id="review-description" name="description" rows="10" />{{review.description}}</textarea>
-  </p>
+</div>
+
+    <!-- DESCRIPTION -->
+    <div class="form-group">
+        <label for="review-description">Description</label><br>
+        <textarea id="review-description" name="description" rows="10" />{{review.description}}</textarea>
+    </div>
 </fieldset>
