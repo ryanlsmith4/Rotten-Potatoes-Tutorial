@@ -66,4 +66,9 @@ const Review = require('../models/review.js');
         })
     })
 
+    app.listen(3000 || process.env.PORT, () => {
+
+        console.log('App listening on port 3000!')
+    });
+
 }
