@@ -23,7 +23,7 @@ require('./controllers/reviews')(app);
 
 //Communicate with localhost
 app.listen(3000, () => {
-    mongoose.connect('mongodb://localhost:27017/rotten-potatoes', { useNewUrlParser: true });
+    mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/rotten-potatoes', { useNewUrlParser: true });
     console.log('App listening on port 3000!')
 });
 
