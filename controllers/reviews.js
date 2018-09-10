@@ -65,7 +65,7 @@ const Comment = require('../models/comment.js');
             console.log(err.message);
         })
     })
-
+// get reviews and comments because they are associated
     app.get('/reviews/:id', (req, res) => {
         // find review
         Review.findById(req.params.id).then(review => {
@@ -79,6 +79,16 @@ const Comment = require('../models/comment.js');
             console.log(err.message);
         });
     });
+
+    //Delete comments
+    app.delete('/reviews/comments/:id', function (req, res) {
+        console.log("DELETE comment");
+        Comment.findOneAndDelete(req.params.id).then((comment) => {
+            res.redirect(`/reviews/${comment.reviewId}`);
+        }).catch((err) => {
+            console.log(err.message);
+        })
+    })
 
     app.listen(process.env.PORT || 3000, () => {
 
