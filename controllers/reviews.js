@@ -1,6 +1,6 @@
 // reviews.js
 const Review = require('../models/review.js');
-
+const Comment = require('../models/comment.js');
 
 //export default function
  module.exports = function(app) {
@@ -41,13 +41,13 @@ const Review = require('../models/review.js');
     });
 
     //Gets Review at ID
-    app.get('/reviews/:id', (req, res) => {
-      Review.findById(req.params.id).then((review) => {
-        res.render('reviews-show', { review: review })
-      }).catch((err) => {
-        console.log(err.message);
-      })
-    })
+    // app.get('/reviews/:id', (req, res) => {
+    //   Review.findById(req.params.id).then((review) => {
+    //     res.render('reviews-show', { review: review })
+    //   }).catch((err) => {
+    //     console.log(err.message);
+    //   })
+    // })
 
     //EDIT review
     app.get('/reviews/:id/edit', function (req, res) {
@@ -65,6 +65,20 @@ const Review = require('../models/review.js');
             console.log(err.message);
         })
     })
+
+    app.get('/reviews/:id', (req, res) => {
+        // find review
+        Review.findById(req.params.id).then(review => {
+            // fetch it's comments
+            Comment.find({ reviewId: req.params.id }).then(comments => {
+                // respond with the template with both values
+                res.render('reviews-show', { review: review, comments: comments })
+            })
+        }).catch((err) => {
+            // catch errors
+            console.log(err.message);
+        });
+    });
 
     app.listen(process.env.PORT || 3000, () => {
 
