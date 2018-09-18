@@ -29,3 +29,4 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/rotten-po
 require('./controllers/comments')(app);
 require('./controllers/reviews')(app);
 require('./controllers/movies')(app);
+require('./controllers/admin.js');

@@ -1,16 +1,12 @@
 <!-- movies-index.handlebars -->
 
-<h1>Hello Movies</h1>
-<hr>
-<h1>Now Playing</h1
 <div class="row">
-{{#each movies}}
-<div class="col-sm-4">
-    <a href='/movies/{{this.id}}'>
-    <img src="http://image.tmdb.org/t/p/w185{{this.poster_path}}"/>
-</a>
-    <p>{{this.title}}</p>
-    <p>{{this.genre_ids_name}}</p>
-</div>
-{{/each}}
+  {{#each movies}}
+    <div class="col-sm-4">
+      <a href="/movies/{{this.id}}">
+          <img src='http://image.tmdb.org/t/p/w185{{this.poster_path}}'/>
+      </a>
+      <p>{{this.title}}<p>
+    </div>
+  {{/each}}
 </div>
