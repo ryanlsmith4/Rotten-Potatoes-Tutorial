@@ -4,17 +4,21 @@ const Comment = require('../models/comment.js');
 
 //export default function
  module.exports = function(app) {
+// route to movies.js
+//      app.get('/', (req, res) => {
+//   res.render('movies-index');
+// })
 
-    app.get('/', (req, res) => {
-        Review.find()
-            .then(reviews => {
-                //console.log(reviews);
-                res.render('reviews-index', { reviews: reviews });
-            })
-            .catch(err => {
-                console.log(err);
-            })
-    });
+    // app.get('/', (req, res) => {
+    //     Review.find()
+    //         .then(reviews => {
+    //             //console.log(reviews);
+    //             res.render('reviews-index', { reviews: reviews });
+    //         })
+    //         .catch(err => {
+    //             console.log(err);
+    //         })
+    // });
 
     app.put('/reviews/:id', (req, res) => {
         Review.findByIdAndUpdate(req.params.id, req.body)

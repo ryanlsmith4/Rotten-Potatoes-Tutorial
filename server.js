@@ -1,3 +1,5 @@
+
+
 // set variables /configure express and handlebars
 const express = require('express');
 const methodOverride = require('method-override');
@@ -10,6 +12,7 @@ const bodyParser = require('body-parser');
 
 const Comment = require('./models/comment');
 const Review = require('./models/review');
+
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -25,3 +28,4 @@ app.set('view engine', 'handlebars');
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/rotten-potatoes', { useNewUrlParser: true });
 require('./controllers/comments')(app);
 require('./controllers/reviews')(app);
+require('./controllers/movies')(app);
