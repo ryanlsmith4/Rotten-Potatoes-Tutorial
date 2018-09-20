@@ -37,7 +37,7 @@ module.exports = function(app){
             moviedb.movieInfo({ id: req.params.id }).then((movie) => {
                 Review.find({movieId: req.params.id}).then((reviews) =>{
     //                console.log(reviews);
-                    if (movie.video) {
+                    if (movie.video === false) {
                         moviedb.movieVideos({ id: req.params.id }).then(videos => {
                             movie.trailer_youtube_id = videos.results[0].key;
                             renderTemplate(movie, reviews);

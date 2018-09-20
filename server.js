@@ -15,7 +15,7 @@ const Review = require('./models/review');
 
 
 app.use(bodyParser.urlencoded({ extended: true }));
-
+app.use(bodyParser.json())
 //override w/ post having ?_method=PUT
 app.use(methodOverride('_method'));
 
@@ -25,8 +25,11 @@ app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 
 app.set('view engine', 'handlebars');
 
+// fix MIME error
+app.use(express.static(__dirname + '/public'));
+
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/rotten-potatoes', { useNewUrlParser: true });
 require('./controllers/comments')(app);
 require('./controllers/reviews')(app);
 require('./controllers/movies')(app);
-require('./controllers/admin.js');
+require('./controllers/admin.js')(app);

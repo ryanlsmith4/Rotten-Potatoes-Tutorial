@@ -7,6 +7,9 @@
     <h2>{{review.movieTitle}}</h2>
     <p>{{review.description}}</p>
     <p><a href="/movies/{{review.movieId}}/reviews/{{review._id}}/edit">Edit</a></p>
+<!-- test here -->
+    <!-- <p><form action="#" id="newComment"> -->
+
     <p><form method="POST" action="/movies/{{review.movieId}}/reviews/{{review._id}}?_method=DELETE">
         <button class="btn btn-primary" type="submit">Delete</button>
     </form></p>
