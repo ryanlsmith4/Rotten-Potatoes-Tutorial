@@ -33,7 +33,7 @@ function commentAdd() {
                    <div class="card-block">
                    <h4 class="card-title">${response.data.comment.title}</h4>
                    <p class="card-text">${response.data.comment.content}</p>
-                   <p><button class="btn btn-link deleteComment" data-comment-id=${response.data.comment._id}>Delete</button></p>
+                   <p><button id="btn-Id-${response.data.comment._id}" class="btn btn-link deleteComment" data-comment-id=${response.data.comment._id} onclick="deleteComment('${response.data.comment._id}')">Delete</button></p>
                    </div>
                    </div>
                    `

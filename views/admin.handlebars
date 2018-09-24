@@ -12,10 +12,10 @@
     <tbody>
         {{#each reviews}}
             <tr id="{{this._id}}">
-                <th scope="row">1</th>
+                <th scope="row">{{this._id}}</th>
                 <td>{{this.title}}</td>
                 <td>{{this.description}}</td>
-                <td><a href="#" id="deleteReview" data-review-id=${this._id}>Delete</a></td>
+                <td><a href="#" id="deleteReview" data-review-id={{this._id}} onclick='deleteComment()' >Delete</a></td>
             </tr>
         {{/each}}
     </tbody>

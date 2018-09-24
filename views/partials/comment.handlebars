@@ -5,8 +5,8 @@
         <h4 class="card-title">{{this.title}}</h4>
         <p class="card-text">{{this.content}}</p>
         <!-- Delete Link -->
-    <p><button id="btn-Id-{{@index}}" class="btn btn-link deleteComment" data-comment-id={{this._id}} onclick="deleteComment('{{@index}}')">Delete</button></p>
+        <p><button id="btn-Id-{{this._id}}" class="btn btn-link deleteComment" data-comment-id={{this._id}} onclick="deleteComment('{{this._id}}')">Delete</button></p>
 
-    </form></p>
+        </p>
     </div>
 </div>

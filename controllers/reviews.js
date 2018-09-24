@@ -89,7 +89,7 @@ module.exports = function(app) {
                 console.log(err.message)
             })
     })
-//DELETE COMMENTS
+//DELETE Review
     app.delete('/movies/:movieId/reviews/:id', function(req, res) {
         console.log("DELETE review")
         Review.findByIdAndRemove(req.params.id).then((review) => {
